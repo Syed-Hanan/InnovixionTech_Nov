@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+    h1{
+        color: yellowgreen;
+        background-color: black;
+    }
+    /*id
+    {
+        background-color: black;
+        color: yellow;
+    }*/
+  </style>
+</head>
+<body>
+
+  <h1>Countdown to New Year</h1>
+  <p id="countdown"></p>
+
+  <script>
+    // Set the date to countdown to
+    const countdownDate = new Date('January 1, 2024 00:00:00').getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      // Calculate time remaining
+      
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+
+      // Display the countdown
+      
+
+      document.getElementById('countdown').innerHTML = `
+        ${days} days 
+        ${hours} hours 
+        ${minutes} minutes 
+        ${seconds} seconds
+      `;
+      
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById('countdown').innerHTML = 'Happy New Year!';
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
